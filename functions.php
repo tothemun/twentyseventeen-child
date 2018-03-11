@@ -17,3 +17,14 @@ function filter_ptags($content){
 }
 
 add_filter('the_content', 'filter_ptags');
+
+function signup_newsletter( $data ) {
+  return 'hello';
+}
+
+add_action('rest_api_init', function() {
+  register_rest_route('mailchimp/v1', '/signup', array(
+    'methods' => 'POST',
+    'callback' => 'signup_newsletter',
+  ));
+});
